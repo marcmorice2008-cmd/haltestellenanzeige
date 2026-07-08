@@ -22,7 +22,7 @@ async function abfahrtenLaden() {
           Hier kommt der RNN/VRN-Datenabruf hinein.
         */
 
-        const daten = [
+const daten = await ladeAbfahrten();
             {
                 linie: "654",
                 ziel: "Mainz Hbf",
