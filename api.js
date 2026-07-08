@@ -4,43 +4,36 @@ async function ladeAbfahrten() {
 
     try {
 
-        /*
-        Hier kommt später die echte TRIAS-Anfrage hin.
-        Die Antwort wird danach in unser Anzeigeformat umgewandelt.
-        */
+        // Hier kommt später der echte API-Aufruf
+        const antwort = await fetch(
+            `/api/abfahrten?stop=${HALTESTELLE}`
+        );
 
 
-        const daten = [
-            {
-                linie: "654",
-                ziel: "Mainz Hbf",
-                zeit: "2 min"
-            },
-            {
-                linie: "630",
-                ziel: "Bad Kreuznach Bf",
-                zeit: "11 min"
-            },
-            {
-                linie: "653",
-                ziel: "Mainz Hbf",
-                zeit: "19 min"
-            },
-            {
-                linie: "656",
-                ziel: "Nieder-Olm",
-                zeit: "27 min"
-            }
-        ];
+        if (!antwort.ok) {
+            throw new Error("Keine Daten");
+        }
 
 
-        return daten;
+        const daten = await antwort.json();
+
+
+        return daten
+            .filter(bus => bus.typ === "BUS")
+            .map(bus => ({
+
+                linie: bus.linie,
+                ziel: bus.ziel,
+                zeit: bus.zeit,
+                verspaetung: bus.verspaetung || 0
+
+            }));
 
 
     } catch(error) {
 
         console.error(
-            "Fehler beim Laden:",
+            "Live-Daten Fehler:",
             error
         );
 
