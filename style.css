@@ -1,0 +1,52 @@
+body {
+    margin: 0;
+    background: #000;
+    color: #ffc400;
+    font-family: "Courier New", monospace;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.anzeige {
+    padding: 35px;
+}
+
+.kopf {
+    display: flex;
+    justify-content: space-between;
+    font-size: 42px;
+}
+
+.ort {
+    font-size: 32px;
+}
+
+.haltestelle {
+    font-size: 55px;
+    font-weight: bold;
+}
+
+#uhr {
+    font-size: 55px;
+}
+
+.tabelle {
+    margin-top: 50px;
+    font-size: 40px;
+}
+
+.zeile {
+    display: grid;
+    grid-template-columns: 120px 1fr 160px;
+    padding: 12px 0;
+}
+
+.kopfzeile {
+    border-bottom: 2px solid #ffc400;
+    font-size: 28px;
+}
+
+.fuss {
+    margin-top: 50px;
+    font-size: 30px;
+}
