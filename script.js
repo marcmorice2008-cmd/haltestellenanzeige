@@ -1,4 +1,4 @@
-async function abfahrtenLaden() {
+
 <script src="config.js"></script>
 <script src="script.js"></script>
 
@@ -16,6 +16,7 @@ uhrAktualisieren();
 
 
 async function abfahrtenLaden() {
+    console.log("Abfrage gestartet");
 
     try {
         /*
@@ -24,6 +25,7 @@ async function abfahrtenLaden() {
         */
 
 const daten = await ladeAbfahrten();
+console.log(daten);
             {
                 linie: "654",
                 ziel: "Mainz Hbf",
