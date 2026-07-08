@@ -69,7 +69,12 @@ const daten = await ladeAbfahrten();
 
     }
     catch(e) {
-        console.log("Fehler beim Laden", e);
+
+    document.getElementById("status").textContent =
+        "● OFFLINE";
+
+    console.log("Fehler beim Laden", e);
+}
     }
 }
 
