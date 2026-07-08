@@ -1,8 +1,12 @@
 const HALTESTELLE = "de:07339:32685";
 
 function uhrAktualisieren() {
-    document.getElementById("uhr").textContent =
-        new Date().toLocaleTimeString("de-DE");
+document.getElementById("uhr").textContent =
+    new Date().toLocaleTimeString("de-DE", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit"
+    });
 }
 
 setInterval(uhrAktualisieren, 1000);
