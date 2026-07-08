@@ -1,4 +1,5 @@
-const HALTESTELLE = "de:07339:32685";
+<script src="config.js"></script>
+<script src="script.js"></script>
 
 function uhrAktualisieren() {
 document.getElementById("uhr").textContent =
