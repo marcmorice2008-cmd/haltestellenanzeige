@@ -1,38 +1,42 @@
 async function ladeAbfahrten() {
 
-    /*
-      Hier kommt später die echte RNN/VRN Live-Abfrage hinein.
-      Rückgabeformat für die Anzeige:
-      
-      [
-        {
-          linie: "654",
-          ziel: "Mainz Hbf",
-          zeit: "2 min"
-        }
-      ]
-    */
+    const HALTESTELLE = "de:07339:32685";
 
-    return [
-        {
-            linie: "654",
-            ziel: "Mainz Hbf",
-            zeit: "2 min"
-        },
-        {
-            linie: "630",
-            ziel: "Bad Kreuznach Bf",
-            zeit: "11 min"
-        },
-        {
-            linie: "653",
-            ziel: "Mainz Hbf",
-            zeit: "19 min"
-        },
-        {
-            linie: "656",
-            ziel: "Nieder-Olm",
-            zeit: "27 min"
+    try {
+
+        const url =
+        `https://example-api.de/departures?stop=${HALTESTELLE}`;
+
+
+        const antwort = await fetch(url);
+
+
+        if (!antwort.ok) {
+            throw new Error("API Fehler");
         }
-    ];
+
+
+        const daten = await antwort.json();
+
+
+        return daten.map(bus => ({
+
+            linie: bus.line,
+            ziel: bus.destination,
+            zeit: bus.departure
+
+        }));
+
+
+    } catch (fehler) {
+
+        console.log(
+            "Live API nicht erreichbar:",
+            fehler
+        );
+
+
+        return [];
+
+    }
 }
