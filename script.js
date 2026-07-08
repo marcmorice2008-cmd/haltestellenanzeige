@@ -64,7 +64,11 @@ console.log(daten);
             <div class="zeile">
                 <span>${bus.linie}</span>
                 <span>${bus.ziel}</span>
-                <span>${bus.zeit}</span>
+<span>
+${bus.verspaetung > 0 
+? "+" + bus.verspaetung + " min"
+: bus.zeit}
+</span>
             </div>
             `;
 
