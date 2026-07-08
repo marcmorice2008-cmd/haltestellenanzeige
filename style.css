@@ -50,3 +50,12 @@ body {
     margin-top: 50px;
     font-size: 30px;
 }
+
+#status {
+    font-weight: bold;
+}
+
+#update {
+    float: right;
+    font-size: 22px;
+}
